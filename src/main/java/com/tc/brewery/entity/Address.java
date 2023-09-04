@@ -16,7 +16,7 @@ public class Address {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "userid", referencedColumnName = "id")
     @JsonIgnoreProperties("addressList")
     private User user;
     private String address;
