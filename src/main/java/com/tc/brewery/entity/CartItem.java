@@ -13,12 +13,12 @@ public class CartItem {
     private Long id;
     @ManyToOne
     @JsonIgnoreProperties("cartItems")
-    @JoinColumn(name = "cart_id",referencedColumnName = "id")
+    @JoinColumn(name = "cartId",referencedColumnName = "id")
     private Cart cart;
 
     @ManyToOne
     @JsonInclude(Include.NON_NULL)
-    @JoinColumn(name = "beer_id",referencedColumnName = "id")
+    @JoinColumn(name = "beerId",referencedColumnName = "id")
     private Beer beer;
     @JsonInclude(Include.NON_NULL)
     private Integer beerQuantity;
@@ -100,7 +100,7 @@ public class CartItem {
     @JsonGetter("food")
     public Object getFoodInfo() {
         if (food != null) {
-            return new ItemInfo(food.getId(), food.getFood_name());
+            return new ItemInfo(food.getId(), food.getFoodName());
         }
         return null;
     }

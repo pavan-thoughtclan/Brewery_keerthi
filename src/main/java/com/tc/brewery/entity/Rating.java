@@ -11,15 +11,15 @@ public class Rating {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "beer_id", referencedColumnName = "id")
+    @JoinColumn(name = "beerId", referencedColumnName = "id")
     private Beer beer;
 
     @ManyToOne
-    @JoinColumn(name = "food_id", referencedColumnName = "id")
+    @JoinColumn(name = "foodId", referencedColumnName = "id")
     private Food food;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 
     @Column(precision = 3, scale = 1)

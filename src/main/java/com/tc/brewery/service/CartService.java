@@ -143,7 +143,7 @@ public class CartService {
         List<Cart> carts = cartRepository.findAll();
 
         for (Cart cart : carts) {
-            cart.setUser_id(cart.getUser().getId());
+            cart.setUserId(cart.getUser().getId());
         }
 
         return carts;

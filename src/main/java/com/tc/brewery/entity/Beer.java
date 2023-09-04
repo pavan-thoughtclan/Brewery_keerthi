@@ -20,14 +20,14 @@ public class Beer {
     private int id;
     private String name;
     private String description;
-    private String image_url;
+    private String imageUrl;
 
     private int abv;
     private int ibu;
     private String category;
-    private String brewers_tips;
-    private String ingredient_name;
-    private String food_pairing;
+    private String brewersTips;
+    private String ingredientName;
+    private String foodPairing;
     private String tagline;
     @OneToMany(mappedBy = "beer",cascade= CascadeType.ALL)
     @JsonIgnore
@@ -55,21 +55,23 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(int id, String name, String description, String image_url, int abv, int ibu, String category, String brewers_tips, String ingredient_name, String food_pairing, String tagline, BigDecimal manual_ratings, BigDecimal averageRating) {
+    public Beer(int id, String name, String description, String imageUrl, int abv, int ibu, String category, String brewersTips, String ingredientName, String foodPairing, String tagline, List<Rating> ratings, List<Pricing> pricings, List<CartItem> cartItems, BigDecimal averageRating) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
         this.abv = abv;
         this.ibu = ibu;
         this.category = category;
-        this.brewers_tips = brewers_tips;
-        this.ingredient_name = ingredient_name;
-        this.food_pairing = food_pairing;
+        this.brewersTips = brewersTips;
+        this.ingredientName = ingredientName;
+        this.foodPairing = foodPairing;
         this.tagline = tagline;
+        this.ratings = ratings;
+        this.pricings = pricings;
+        this.cartItems = cartItems;
         this.averageRating = averageRating;
     }
-
 
     @JsonGetter("ratings")
     public List<Map<String, Object>> getRatingsInfo() {
@@ -111,22 +113,6 @@ public class Beer {
     }
 
 
-    public String getIngredient_name() {
-        return ingredient_name;
-    }
-
-    public void setIngredient_name(String ingredient_name) {
-        this.ingredient_name = ingredient_name;
-    }
-
-    public String getFood_pairing() {
-        return food_pairing;
-    }
-
-    public void setFood_pairing(String food_pairing) {
-        this.food_pairing = food_pairing;
-    }
-
     public int getId() {
         return id;
     }
@@ -151,13 +137,6 @@ public class Beer {
         this.description = description;
     }
 
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
 
     public int getAbv() {
         return abv;
@@ -183,13 +162,7 @@ public class Beer {
         this.category = category;
     }
 
-    public String getBrewers_tips() {
-        return brewers_tips;
-    }
 
-    public void setBrewers_tips(String brewers_tips) {
-        this.brewers_tips = brewers_tips;
-    }
 
     private Map<String, Object> getUserInfo(User user) {
         Map<String, Object> userInfo = new HashMap<>();
@@ -199,6 +172,45 @@ public class Beer {
         return userInfo;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getBrewersTips() {
+        return brewersTips;
+    }
+
+    public void setBrewersTips(String brewersTips) {
+        this.brewersTips = brewersTips;
+    }
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    public String getFoodPairing() {
+        return foodPairing;
+    }
+
+    public void setFoodPairing(String foodPairing) {
+        this.foodPairing = foodPairing;
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
 
     @Override
     public String toString() {
@@ -206,16 +218,17 @@ public class Beer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", image_url='" + image_url + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", abv=" + abv +
                 ", ibu=" + ibu +
                 ", category='" + category + '\'' +
-                ", brewers_tips='" + brewers_tips + '\'' +
-                ", ingredient_name='" + ingredient_name + '\'' +
-                ", food_pairing='" + food_pairing + '\'' +
+                ", brewersTips='" + brewersTips + '\'' +
+                ", ingredientName='" + ingredientName + '\'' +
+                ", foodPairing='" + foodPairing + '\'' +
                 ", tagline='" + tagline + '\'' +
                 ", ratings=" + ratings +
                 ", pricings=" + pricings +
+                ", cartItems=" + cartItems +
                 ", averageRating=" + averageRating +
                 '}';
     }

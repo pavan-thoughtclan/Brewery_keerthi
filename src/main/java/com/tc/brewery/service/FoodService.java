@@ -45,7 +45,7 @@ public class FoodService {
         return foodRepository.findById(foodId).orElse(null);
     }
     public Food saveFood(Food food) {
-        String foodName = food.getFood_name();
+        String foodName = food.getFoodName();
         if (!StringUtils.isEmpty(foodName) && foodRepository.existsByFoodName(foodName)) {
             throw new RuntimeException("Food with the same name already exists");
         }

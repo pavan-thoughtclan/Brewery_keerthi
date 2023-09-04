@@ -17,10 +17,10 @@ public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String food_name;
+    private String foodName;
     private String category;
-    private String image_url;
-    private BigDecimal food_price;
+    private String imageUrl;
+    private BigDecimal foodPrice;
     private String description;
     private String calories;
     @OneToMany(mappedBy = "food",cascade= CascadeType.ALL)
@@ -45,14 +45,16 @@ public class Food {
     public Food() {
     }
 
-    public Food(int id, String food_name, String category, String image_url, BigDecimal food_price, String description, String calories, BigDecimal averageRating) {
+    public Food(int id, String foodName, String category, String imageUrl, BigDecimal foodPrice, String description, String calories, List<CartItem> cartItems, List<Rating> ratings, BigDecimal averageRating) {
         this.id = id;
-        this.food_name = food_name;
+        this.foodName = foodName;
         this.category = category;
-        this.image_url = image_url;
-        this.food_price = food_price;
+        this.imageUrl = imageUrl;
+        this.foodPrice = foodPrice;
         this.description = description;
         this.calories = calories;
+        this.cartItems = cartItems;
+        this.ratings = ratings;
         this.averageRating = averageRating;
     }
 
@@ -64,13 +66,6 @@ public class Food {
         this.id = id;
     }
 
-    public String getFood_name() {
-        return food_name;
-    }
-
-    public void setFood_name(String food_name) {
-        this.food_name = food_name;
-    }
 
     public String getCategory() {
         return category;
@@ -80,21 +75,6 @@ public class Food {
         this.category = category;
     }
 
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
-
-    public BigDecimal getFood_price() {
-        return food_price;
-    }
-
-    public void setFood_price(BigDecimal food_price) {
-        this.food_price = food_price;
-    }
 
     public String getDescription() {
         return description;
@@ -143,17 +123,49 @@ public class Food {
         this.ratings = ratings;
     }
 
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public BigDecimal getFoodPrice() {
+        return foodPrice;
+    }
+
+    public void setFoodPrice(BigDecimal foodPrice) {
+        this.foodPrice = foodPrice;
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
+
     @Override
     public String toString() {
         return "Food{" +
                 "id=" + id +
-                ", food_name='" + food_name + '\'' +
+                ", foodName='" + foodName + '\'' +
                 ", category='" + category + '\'' +
-                ", image_url='" + image_url + '\'' +
-                ", food_price=" + food_price +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", foodPrice=" + foodPrice +
                 ", description='" + description + '\'' +
                 ", calories='" + calories + '\'' +
-//                ", cartItems=" + cartItems +
+                ", cartItems=" + cartItems +
                 ", ratings=" + ratings +
                 ", averageRating=" + averageRating +
                 '}';
